@@ -1,0 +1,33 @@
+//Motoko giriş
+//import 
+import Map "mo:base/HashMap";
+import Text "mo:base/Text";
+actor {//akıllı sözleşme ekleme
+  type Name = Text;
+  type Phone = Text;
+  type Entry ={
+    desc: Text;
+    phone: Phone;
+  };//detyalı bilgilerde süslü sonuna ; konulur
+  //değişkenler
+  //let =>immutable(değişmez)
+  //var->mutable (değişir)
+  //const->...
+  let phonebook= Map.HashMap<Name,Entry>(0,Text.equal,Text.hash);//anahtar ,açıcağı kasa,içine konulcaklar,sıfıra eşitleme
+  //query =>sorgular
+  //update->geliştirme
+  //async<>->paralelde yapılıyor
+  //web3 de işlemlerin güvenli yapılmasına yaedımcı olur
+ //motoko type language
+  public func insert(name:Name,entry :Entry): async(){
+    phonebook.put(name,entry);//girdiğim bilgiyi rehbere ekliyor
+  };
+  //loop->if;
+  //? ister string ister başka bişey döndür
+  public query func lookup(name:Name): async ?Entry{
+    phonebook.get(name);//query bir sorgulamadır kasa verilmişmi anahtrlama yapılmışmı name ile beraber bana entryi döndür
+  };
+
+
+}
+https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/?tag=85525043
